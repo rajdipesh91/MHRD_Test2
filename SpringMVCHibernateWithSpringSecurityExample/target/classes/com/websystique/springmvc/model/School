@@ -1,0 +1,450 @@
+/**
+ * 
+ */
+package com.sttl.easi.model;
+
+import java.util.Comparator;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+//import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+/**
+ * @author Dipesh Yadav
+ *
+ */
+@Entity
+@Table(schema = "drawing", name = "redraw")
+
+public class Redraw {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "rid", unique = true, nullable = false)
+	private int rid;
+
+	@Column(name = "officer_type")
+	private String officertype;
+
+	@Column(name = "application_number")
+	private String application_number;
+	
+	@Column(name = "department")
+	private String department;
+
+	@Column(name = "no_of_offcer_req")
+	private Integer norq;
+
+	@Column(name = "description")
+	private String descrp;
+
+	@Column(name = "reqsts")
+	private String reqsts;
+
+	@Column(name = "forwarded_to_role")
+	private Integer forwardedToRole;
+
+	@Column(name = "save_as_draft")
+	private Boolean saveAsDraft;
+
+	@Column(name = "date_from")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	private Date date_from;
+
+	@Column(name = "date_to")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	private Date date_to;
+
+	@Column(name = "officer_name")
+	private String officer_name;
+
+	@Column(name = "region_id")
+	private Integer regionId;
+
+	@Column(name = "circle_id")
+	private Integer circleId;
+
+	@Column(name = "sub_circle_id")
+	private Integer subCircleId;
+
+	@Column(name = "created_by")
+	private Integer created_by;
+
+	@Column(name = "created_date")
+	private Date created_date;
+	
+	@Column(name = "admcmt")
+	private String admcmt;
+
+	@OneToOne
+	@JoinColumn(name = "region_id", insertable = false, updatable = false)
+	private Region region;
+
+	@OneToOne
+	@JoinColumn(name = "circle_id", insertable = false, updatable = false)
+	private Circle circle;
+
+	@OneToOne
+	@JoinColumn(name = "sub_circle_id", insertable = false, updatable = false)
+	private SubCircle subCircle;
+
+	/**
+	 * @return the region
+	 */
+	public Region getRegion() {
+		return region;
+	}
+
+	/**
+	 * @param region
+	 *            the region to set
+	 */
+	public void setRegion(Region region) {
+		this.region = region;
+	}
+
+	/**
+	 * @return the circle
+	 */
+	public Circle getCircle() {
+		return circle;
+	}
+
+	/**
+	 * @param circle
+	 *            the circle to set
+	 */
+	public void setCircle(Circle circle) {
+		this.circle = circle;
+	}
+
+	/**
+	 * @return the subCircle
+	 */
+	public SubCircle getSubCircle() {
+		return subCircle;
+	}
+
+	/**
+	 * @param subCircle
+	 *            the subCircle to set
+	 */
+	public void setSubCircle(SubCircle subCircle) {
+		this.subCircle = subCircle;
+	}
+
+	/**
+	 * @return the rid
+	 */
+	public int getRid() {
+		return rid;
+	}
+
+	/**
+	 * @param rid
+	 *            the rid to set
+	 */
+	public void setRid(int rid) {
+		this.rid = rid;
+	}
+
+	/**
+	 * @return the officertype
+	 */
+	public String getOfficertype() {
+		return officertype;
+	}
+
+	/**
+	 * @param officertype
+	 *            the officertype to set
+	 */
+	public void setOfficertype(String officertype) {
+		this.officertype = officertype;
+	}
+
+	/**
+	 * @return the department
+	 */
+	public String getDepartment() {
+		return department;
+	}
+
+	/**
+	 * @param department
+	 *            the department to set
+	 */
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
+	/**
+	 * @return the norq
+	 */
+	public Integer getNorq() {
+		return norq;
+	}
+
+	/**
+	 * @param norq
+	 *            the norq to set
+	 */
+	public void setNorq(Integer norq) {
+		this.norq = norq;
+	}
+
+	/**
+	 * @return the descrp
+	 */
+	public String getDescrp() {
+		return descrp;
+	}
+
+	/**
+	 * @param descrp
+	 *            the descrp to set
+	 */
+	public void setDescrp(String descrp) {
+		this.descrp = descrp;
+	}
+
+	/**
+	 * @return the admcmt
+	 */
+	public String getAdmcmt() {
+		return admcmt;
+	}
+
+	/**
+	 * @param admcmt
+	 *            the admcmt to set
+	 */
+	public void setAdmcmt(String admcmt) {
+		this.admcmt = admcmt;
+	}
+
+	/**
+	 * @return the reqsts
+	 */
+	public String getReqsts() {
+		return reqsts;
+	}
+
+	/**
+	 * @param reqsts
+	 *            the reqsts to set
+	 */
+	public void setReqsts(String reqsts) {
+		this.reqsts = reqsts;
+	}
+
+	/**
+	 * @return the forwardedToRole
+	 */
+	public Integer getForwardedToRole() {
+		return forwardedToRole;
+	}
+
+	/**
+	 * @param forwardedToRole
+	 *            the forwardedToRole to set
+	 */
+	public void setForwardedToRole(Integer forwardedToRole) {
+		this.forwardedToRole = forwardedToRole;
+	}
+
+	/**
+	 * @return the saveAsDraft
+	 */
+	public Boolean getSaveAsDraft() {
+		return saveAsDraft;
+	}
+
+	/**
+	 * @param saveAsDraft
+	 *            the saveAsDraft to set
+	 */
+	public void setSaveAsDraft(Boolean saveAsDraft) {
+		this.saveAsDraft = saveAsDraft;
+	}
+
+	/**
+	 * @return the date_from
+	 */
+	public Date getDate_from() {
+		return date_from;
+	}
+
+	/**
+	 * @param date_from
+	 *            the date_from to set
+	 */
+	public void setDate_from(Date date_from) {
+		this.date_from = date_from;
+	}
+
+	/**
+	 * @return the date_to
+	 */
+	public Date getDate_to() {
+		return date_to;
+	}
+
+	/**
+	 * @param date_to
+	 *            the date_to to set
+	 */
+	public void setDate_to(Date date_to) {
+		this.date_to = date_to;
+	}
+
+	/**
+	 * @return the officer_name
+	 */
+	public String getOfficer_name() {
+		return officer_name;
+	}
+
+	/**
+	 * @param officer_name
+	 *            the officer_name to set
+	 */
+	public void setOfficer_name(String officer_name) {
+		this.officer_name = officer_name;
+	}
+
+	/**
+	 * @return the regionId
+	 */
+	public Integer getRegionId() {
+		return regionId;
+	}
+
+	/**
+	 * @param regionId
+	 *            the regionId to set
+	 */
+	public void setRegionId(Integer regionId) {
+		this.regionId = regionId;
+	}
+
+	/**
+	 * @return the circleId
+	 */
+	public Integer getCircleId() {
+		return circleId;
+	}
+
+	/**
+	 * @param circleId
+	 *            the circleId to set
+	 */
+	public void setCircleId(Integer circleId) {
+		this.circleId = circleId;
+	}
+
+	/**
+	 * @return the subCircleId
+	 */
+	public Integer getSubCircleId() {
+		return subCircleId;
+	}
+
+	/**
+	 * @param subCircleId
+	 *            the subCircleId to set
+	 */
+	public void setSubCircleId(Integer subCircleId) {
+		this.subCircleId = subCircleId;
+	}
+
+	/**
+	 * @return the created_by
+	 */
+	public Integer getCreated_by() {
+		return created_by;
+	}
+
+	/**
+	 * @param created_by
+	 *            the created_by to set
+	 */
+	public void setCreated_by(Integer created_by) {
+		this.created_by = created_by;
+	}
+
+	/**
+	 * @return the created_date
+	 */
+	public Date getCreated_date() {
+		return created_date;
+	}
+
+	/**
+	 * @param created_date
+	 *            the created_date to set
+	 */
+	public void setCreated_date(Date created_date) {
+		this.created_date = created_date;
+	}
+	
+	
+
+	/**
+	 * @return the application_number
+	 */
+	public String getApplication_number() {
+		return application_number;
+	}
+
+	/**
+	 * @param application_number the application_number to set
+	 */
+	public void setApplication_number(String application_number) {
+		this.application_number = application_number;
+	}
+
+
+
+	/* Comparator for sorting the list by RId */
+	public static Comparator<Redraw> StuRollno = new Comparator<Redraw>() {
+
+		public int compare(Redraw s1, Redraw s2) {
+
+			int rid1 = s1.getRid();
+			int rid2 = s2.getRid();
+
+			// /*For ascending order*/
+			// return rid1-rid2;
+
+			/* For descending order */
+			return rid2 - rid1;
+		}
+	};
+
+	/* Comparator for sorting the list by RId */
+	public static Comparator<Redraw> Test1 = new Comparator<Redraw>() {
+
+		public int compare(Redraw s1, Redraw s2) {
+
+			int rid1 = s1.getRid();
+			int rid2 = s2.getRid();
+
+			// /*For ascending order*/
+			// return rid1-rid2;
+
+			/* For descending order */
+			return rid2 - rid1;
+		}
+	};
+
+}
